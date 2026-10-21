@@ -63,6 +63,7 @@ class Solution:
         # 1. Dead neurons
         if any(s["dead_fraction"] > 0.5 for s in activation_stats):
             return "dead_neurons"
+        # All gradients and vanishing in the layers
 
         # 2. Exploding gradients (NaN/inf also counts as exploded)
         if any(is_bad(s["norm"]) or s["norm"] > 1000 for s in gradient_stats):
